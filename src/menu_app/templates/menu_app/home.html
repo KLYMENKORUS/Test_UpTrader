@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load tree_menu %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-body">
+                        {% with menu_name='summer' %}
+                            {% include 'menu_app/menu.html' with items=items %}
+                            <p>Length of items: {{ items|length }}</p>
+                        {% endwith %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

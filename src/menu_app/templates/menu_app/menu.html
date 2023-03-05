@@ -1,0 +1,21 @@
+{% load tree_menu %}
+
+{% if items %}
+<ul>
+    {% for item in items %}
+    {% with children=item.children.all %}
+    <li>
+        <a href="{{ item.url }}" {% if item.url == request.path %}class="active"{% endif %}>{{ item.name }}</a>
+        {% if children %}
+            <ul>
+                {% for child in children %}
+                <li><a href="{{ child.url }}">{{ child.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+    {% endwith %}
+    {% endfor %}
+</ul>
+{% endif %}
+
